@@ -1,0 +1,64 @@
+basePath: /
+definitions:
+  main.Article:
+    properties:
+      _id:
+        type: string
+      Title:
+        type: string
+      content:
+        type: string
+      desc:
+        type: string
+    type: object
+host: localhost:5050
+info:
+  contact:
+    email: hello@gmail.com
+    name: API Support
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Article API
+  version: "1.0"
+paths:
+  /article:
+    get:
+      consumes:
+      - application/json
+      description: Get details of all articles
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/main.Article'
+            type: array
+      summary: Get details of all article
+      tags:
+      - articles
+    post:
+      consumes:
+      - application/json
+      description: Create a new article with the input paylod
+      parameters:
+      - description: Create article
+        in: body
+        name: article
+        required: true
+        schema:
+          $ref: '#/definitions/main.Article'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.Article'
+      summary: Create a new article
+      tags:
+      - articles
+swagger: "2.0"

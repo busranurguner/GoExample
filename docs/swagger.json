@@ -1,0 +1,97 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Article API",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "API Support",
+            "email": "hello@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:5050",
+    "basePath": "/",
+    "paths": {
+        "/article": {
+            "get": {
+                "description": "Get details of all articles",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "articles"
+                ],
+                "summary": "Get details of all article",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/main.Article"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Create a new article with the input paylod",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "articles"
+                ],
+                "summary": "Create a new article",
+                "parameters": [
+                    {
+                        "description": "Create article",
+                        "name": "article",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/main.Article"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/main.Article"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "main.Article": {
+            "type": "object",
+            "properties": {
+                "Title": {
+                    "type": "string"
+                },
+                "_id": {
+                    "type": "string"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "desc": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
