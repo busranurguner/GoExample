@@ -34,7 +34,7 @@ var ctx = context.TODO()
 func handleRequests() {
 
 	//connection
-	clientOptions := options.Client().ApplyURI("...") //your mongodb url
+	clientOptions := options.Client().ApplyURI("mongodb://localhost:27017") 
 	client, _ = mongo.Connect(ctx, clientOptions)
 
 	// creates a new instance of a mux router
